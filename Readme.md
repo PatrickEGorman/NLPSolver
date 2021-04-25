@@ -8,7 +8,7 @@ It also takes in a single constraint of the form g(x,y,z)-b which is assumed to 
 
 Finally, it takes a tolerance level for the approximation
 
-It is important to note that the recognized code for an exponential is "**" and not "^".  
+It is important to note that the recognized code for an exponential is ```**``` and not ```^```.  
 The program is only guaranteed to work with second degree polynomials with a min or max in terms of x, y and z variables, and a linear constraint equal to 0.
 ## Output
 It prints out a calculated extreme point within a specified tolerance
