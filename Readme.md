@@ -9,9 +9,8 @@ with second degree functions that have a max or a min.  It may or may not work w
 functions.  It can detect if a second order function has a saddle point but will likely not get
 the correct location of the saddle.
 
-It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0.  This program
-has only been tested with first order constraints so performance with higher order constraints is not
-guaranteed.
+It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0.  The program only
+works with first degree constraints.
 
 Finally, it takes a tolerance level for the approximation.  The program will run until this tolerance 
 is achieved.
@@ -220,4 +219,16 @@ to install these packages.
 
 ```
 mpmath==1.2.1
-sympy==1.7.1```
+sympy==1.7.1
+```
+
+## Conclusions
+
+This program makes a decent little calculator for second order polynomials with minimums and maximums.
+If more time was given to work on it, it could certainly be made to be more robust.  However for the 
+purposes of getting a working program that effectively uses the penalty method, I believe this is sufficient.
+A few possible additions to consider would be looking into how to make it work with higher degree polynomials,
+allowing user to input whether they want a min or a max, allowing for less than or equal to or greater than or equal
+to constraints, allowing for higher order constraints, and allowing user to input a maximum number of iterations instead of a tolerance.  For any of these
+additions, the existing program provides a solid basis for such improvements.  If you have any issues running
+this application or any other questions, feel free and contact me.
