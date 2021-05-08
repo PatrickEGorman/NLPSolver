@@ -30,7 +30,8 @@ class NLPSolver(object):
         crit = crit_points(self.x, penalty_function)
         val = self.objective.subs(crit)
         diff = self.p.subs(crit)
-        if self.u * diff > self.tolerance:  # repeate until tol achieved
+        # Iterate until tolerance is reached if function doesn't have a saddle point
+        if self.u * diff > self.tolerance and not (self.min and self.max):
             print("Objective value " + str(val) + " at points " + str(crit))
             print(str(self.u * diff) + ">" + str(self.tolerance) + " continuing iterations" + "for u=" + str(self.u))
             self.u = self.u * 10
@@ -40,7 +41,7 @@ class NLPSolver(object):
             print("Final objective value " + str(val) + " at points " + str(crit) + "for u=" + str(self.u))
             # If mixed eigenvalues function has a saddle point
             if self.min and self.max:
-                print("Function has a saddle point")
+                print("Function has a saddle point.  Penalty method not effective.")
             elif self.min:
                 print("Point is a minimum")
             elif self.max:
