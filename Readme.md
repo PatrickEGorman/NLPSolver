@@ -41,7 +41,7 @@ Answer prompts for polynomial, constraint, and tolerance making sure it's in pro
 handle.
 
 ## Example runs
-```shell
+```
 python main.py
 The following application uses the penalty method to approximate a nonlinear program
 The program takes in a second degree objective function in terms of variables x,y,z
@@ -68,7 +68,7 @@ DONE
 
 ```
 
-```shell 
+```
 python main.py
 The following application uses the penalty method to approximate a nonlinear program
 The program takes in a second degree objective function in terms of variables x,y,z
