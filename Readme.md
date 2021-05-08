@@ -36,14 +36,18 @@ the actual location of the saddle.
 
 ## Running The App
 
-First enter the command ```pip install -r requirements.txt``` in a shell window while in the main directory.
+Clone the repository via ```git clone https://github.com/PatrickEGorman/NLPSolver``` or download and extract the zip.
+
+Navigate to the root directory of the program.
+
+Enter the command ```pip install -r requirements.txt``` in a shell window while in the main directory.
 
 Then enter ```python main.py```
 
 If this fails try ```pip3 install -r requirements.txt``` and ```python3 main.py```
 
-Answer prompts for polynomial, constraint, and tolerance making sure it's in proper form and a polynomial this app can
-handle.
+Answer prompts for polynomial, constraint, and tolerance making sure they're in proper form and within the limits of what
+the app can handle.
 
 ## Example runs
 
