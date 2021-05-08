@@ -4,21 +4,31 @@ The following application uses the penalty method to approximate a nonlinear pro
 
 ## Input
 
-The program takes in a second degree objective function in terms of variables x,y,z
+The program takes in a second degree objective function in terms of variables x,y,z.  It works best
+with second degree functions that have a max or a min.  It may or may not work with higher degree
+functions.  It can detect if a second order function has a saddle point but will likely not get
+the correct location of the saddle.
 
-It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0
+It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0.  This program
+has only been tested with first order constraints so performance with higher order constraints is not
+guaranteed.
 
-Finally, it takes a tolerance level for the approximation
+Finally, it takes a tolerance level for the approximation.  The program will run until this tolerance 
+is achieved.
 
-It is important to note that the recognized code for an exponential is ```**``` and not ```^```.  
+It is important to note that the recognized code for an exponential is ```**``` and not ```^```.  In the case
+of 2 terms being multiplied together a ```*``` symbol is required.  The program will not recognize any variables
+other than x,y, and z, however not all 3 variables are required to be included.
 The program is only guaranteed to work with second degree polynomials with a min or max in terms of x, y and z
 variables, and a linear constraint equal to 0.
 
 ## Output
 
-It prints out a calculated extreme point within a specified tolerance
+It prints out a calculated extreme point within a specified tolerance and all steps taken to calculate the extreme
+point as well as the value of the penalty coefficient u.
 
-It also prints out whether the point is a max or a min
+It also prints out whether the point is a max or a min.  It can detect if a function has a saddle point, but is not accurate in determining 
+the actual location of the saddle.
 
 ## Running The App
 
