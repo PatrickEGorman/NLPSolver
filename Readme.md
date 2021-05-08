@@ -18,7 +18,8 @@ is achieved.
 
 It is important to note that the recognized code for an exponential is ```**``` and not ```^```.  In the case
 of 2 terms being multiplied together a ```*``` symbol is required.  The program will not recognize any variables
-other than x,y, and z, however not all 3 variables are required to be included.
+other than x,y, and z.  It can run with 2 out of 3 variables, but due to some issue in the libraries used, it
+doesn't seem to do well with only 1 out of 3 variables.
 The program is only guaranteed to work with second degree polynomials with a min or max in terms of x, y and z
 variables, and a linear constraint equal to 0.
 
@@ -39,9 +40,35 @@ Then enter ```python main.py```
 Answer prompts for polynomial, constraint, and tolerance making sure it's in proper form and a polynomial this app can
 handle.
 
-## Example run
+## Example runs
+```shell
+python main.py
+The following application uses the penalty method to approximate a nonlinear program
+The program takes in a second degree objective function in terms of variables x,y,z
+It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0
+Finally, it takes a tolerance level for the approximation
+--------------------------------------------------------------
+It prints out a calculated extreme point within a specified tolerance
+It also prints out whether the point is a max or a min
+Input Objective Function: -x**2-y**2
+Input Constraint: 0=x+y-2
+Input tolerance: 0.01
+Objective value -0.125000000000000 at points {x: -0.250000000000000, y: -0.250000000000000}
+0.625000000000000>0.01 continuing iterationsfor u=0.1
+Objective value -8.00000000000000 at points {y: 2.00000000000000, x: 2.00000000000000}
+4.00000000000000>0.01 continuing iterationsfor u=1.0
+Objective value -2.21606648199446 at points {x: 1.05263157894737, y: 1.05263157894737}
+0.110803324099723>0.01 continuing iterationsfor u=10.0
+Objective value -2.02015100628772 at points {x: 1.00502512562814, y: 1.00502512562814}
+0.0101007550314382>0.01 continuing iterationsfor u=100.0
+0.00100100075050061<=0.01 ceasing iterations
+Final objective value -2.00200150100063 at points {x: 1.00050025012506, y: 1.00050025012506}for u=1000.0
+Point is a maximum
+DONE
 
-``` 
+```
+
+```shell 
 python main.py
 The following application uses the penalty method to approximate a nonlinear program
 The program takes in a second degree objective function in terms of variables x,y,z
