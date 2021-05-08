@@ -1,15 +1,16 @@
 # NLPSolver
 
-The following application uses the penalty method to approximate a nonlinear program.
+The following application uses the penalty method to approximate a nonlinear program with a second degree
+objective function, a first degree equality constraint, and a desired tolerance.
 
 ## Input
 
-The program takes in a second degree objective function in terms of variables x,y,z.  It works best
-with second degree functions that have a max or a min.  It may or may not work with higher degree
-functions.  It can detect if a second order function has a saddle point but will likely not get
+The program takes in a second degree objective function f(x,y,z).  It works best
+with second degree functions that have a max or a min.  It does not work with higher degree functions.  
+It can detect if a second order function has a saddle point but will likely not get
 the correct location of the saddle.
 
-It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0.  The program only
+It also takes in a single g(x,y,z) constraint of the form 0=g(x,y,z).  The program only
 works with first degree constraints.
 
 Finally, it takes a tolerance level for the approximation.  The program will run until this tolerance 
