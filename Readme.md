@@ -75,14 +75,6 @@ DONE
 
 Here the program is shown to calculate the minimum of a 3 variable second degree function.
 ```
-python main.py
-The following application uses the penalty method to approximate a nonlinear program
-The program takes in a second degree objective function in terms of variables x,y,z
-It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0
-Finally, it takes a tolerance level for the approximation
---------------------------------------------------------------
-It prints out a calculated extreme point within a specified tolerance
-It also prints out whether the point is a max or a min
 Input Objective Function: x**2+5*x+2*y**2-5*y+2*z**2-3*z+x*y+3         
 Input Constraint: 0=x+y+y-5
 Input tolerance: .001
@@ -105,53 +97,46 @@ DONE
 Here the program does not correctly get the location of a saddle point of a second degree function, but does accurately
 determine that a saddle point exists due to properties of the Hessians eigenvalues.
 ```
-python main.py
-The following application uses the penalty method to approximate a nonlinear program
-The program takes in a second degree objective function in terms of variables x,y,z
-It also takes in a single constraint of the form g(x,y,z)-b which is assumed to equal 0
-Finally, it takes a tolerance level for the approximation
---------------------------------------------------------------
-It prints out a calculated extreme point within a specified tolerance
-It also prints out whether the point is a max or a min
-Input Objective Function: x**2-y**2
-Input Constraint: 0=x-y+5
-Input tolerance: 0.01  
-Objective value 0 at points {x: -0.500000000000000, y: -0.500000000000000}
-2.50000000000000>0.01 continuing iterationsfor u=0.1
-Objective value 0 at points {x: -5.00000000000000, y: -5.00000000000000}
-25.0000000000000>0.01 continuing iterationsfor u=1.0
-Objective value 0 at points {x: -50.0000000000000, y: -50.0000000000000}
-250.000000000000>0.01 continuing iterationsfor u=10.0
-Objective value 0 at points {x: -500.000000000000, y: -500.000000000000}
-2500.00000000003>0.01 continuing iterationsfor u=100.0
-Objective value 0 at points {x: -5000.00000000000, y: -5000.00000000000}
-25000.0000000044>0.01 continuing iterationsfor u=1000.0
-Objective value 0 at points {x: -50000.0000000000, y: -50000.0000000000}
-250000.000000696>0.01 continuing iterationsfor u=10000.0
-Objective value 0 at points {x: -500000.000000000, y: -500000.000000000}
-2499999.99998098>0.01 continuing iterationsfor u=100000.0
-Objective value 0 at points {x: -5000000.00000000, y: -5000000.00000000}
-25000000.0002817>0.01 continuing iterationsfor u=1000000.0
-Objective value 0 at points {x: -50000000.0000000, y: -50000000.0000000}
-250000000.251965>0.01 continuing iterationsfor u=10000000.0
-Objective value 0 at points {x: -500000000.000000, y: -500000000.000000}
-2500000030.63495>0.01 continuing iterationsfor u=100000000.0
-Objective value 0 at points {x: -5000000000.00000, y: -5000000000.00000}
-25000004087.0187>0.01 continuing iterationsfor u=1000000000.0
-Objective value 0 at points {x: -50000000000.0000, y: -50000000000.0000}
-250000041320.187>0.01 continuing iterationsfor u=10000000000.0
-Objective value 0 at points {x: -500000000000.000, y: -500000000000.000}
-2500000413651.87>0.01 continuing iterationsfor u=100000000000.0
-Objective value 0 at points {x: -5000000000000.00, y: -5000000000000.00}
-25004445226649.9>0.01 continuing iterationsfor u=1000000000000.0
-Objective value 0 at points {x: -50000000000000.0, y: -50000000000000.0}
-249600520792536.>0.01 continuing iterationsfor u=10000000000000.0
-Objective value 0 at points {x: -500000000000000., y: -500000000000000.}
-2.49600520792581e+15>0.01 continuing iterationsfor u=100000000000000.0
-0<=0.01 ceasing iterations
-Final objective value -y**2 + 25.0*(0.2*y - 1)**2 at points {x: y - 5.0}for u=1000000000000000.0
-Point is a saddle point
+pInput Objective Function: x**2-y**2
+Input Constraint: 0=x+y-5
+Input tolerance: 0.1
+Objective value 0 at points {x: 0.500000000000000, y: -0.500000000000000}
+2.50000000000000>0.1 continuing iterationsfor u=0.1
+Objective value 0 at points {x: 5.00000000000000, y: -5.00000000000000}
+25.0000000000000>0.1 continuing iterationsfor u=1.0
+Objective value 0 at points {x: 50.0000000000000, y: -50.0000000000000}
+250.000000000000>0.1 continuing iterationsfor u=10.0
+Objective value 0 at points {x: 500.000000000000, y: -500.000000000000}
+2500.00000000003>0.1 continuing iterationsfor u=100.0
+Objective value 0 at points {x: 5000.00000000000, y: -5000.00000000000}
+25000.0000000044>0.1 continuing iterationsfor u=1000.0
+Objective value 0 at points {x: 50000.0000000000, y: -50000.0000000000}
+250000.000000696>0.1 continuing iterationsfor u=10000.0
+Objective value 0 at points {x: 500000.000000000, y: -500000.000000000}
+2499999.99998098>0.1 continuing iterationsfor u=100000.0
+Objective value 0 at points {x: 5000000.00000000, y: -5000000.00000000}
+25000000.0002817>0.1 continuing iterationsfor u=1000000.0
+Objective value 0 at points {x: 50000000.0000000, y: -50000000.0000000}
+250000000.251965>0.1 continuing iterationsfor u=10000000.0
+Objective value 0 at points {x: 500000000.000000, y: -500000000.000000}
+2500000030.63495>0.1 continuing iterationsfor u=100000000.0
+Objective value 0 at points {x: 5000000000.00000, y: -5000000000.00000}
+25000004087.0187>0.1 continuing iterationsfor u=1000000000.0
+Objective value 0 at points {x: 50000000000.0000, y: -50000000000.0000}
+250000041320.187>0.1 continuing iterationsfor u=10000000000.0
+Objective value 0 at points {x: 500000000000.000, y: -500000000000.000}
+2500000413651.87>0.1 continuing iterationsfor u=100000000000.0
+Objective value 0 at points {x: 5000000000000.00, y: -5000000000000.00}
+25004445226649.9>0.1 continuing iterationsfor u=1000000000000.0
+Objective value 0 at points {x: 50000000000000.0, y: -50000000000000.0}
+249600520792536.>0.1 continuing iterationsfor u=10000000000000.0
+Objective value 0 at points {x: 500000000000000., y: -500000000000000.}
+2.49600520792581e+15>0.1 continuing iterationsfor u=100000000000000.0
+0<=0.1 ceasing iterations
+Final objective value -y**2 + 25.0*(1 - 0.2*y)**2 at points {x: 5.0 - y}for u=1000000000000000.0
+Function has a saddle point
 DONE
+
 ```
 
 ## Code
