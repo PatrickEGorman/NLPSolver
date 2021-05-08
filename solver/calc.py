@@ -3,8 +3,10 @@ from sympy import *
 from .util import hessian, crit_points
 
 
+# NLP Solver Object
 class NLPSolver(object):
 
+    # Initialize class variables
     def __init__(self, vars, objective, constraint, tolerance):
         self.x = symbols('x y z')
         self.u = 0.1
@@ -22,21 +24,23 @@ class NLPSolver(object):
         self.tolerance = float(tolerance)
         self.p = self.constraint ** 2
 
+    # Recursive function to iterate through penalty functions until tol achieved
     def solve(self):
         penalty_function = self.objective + self.u * self.p
         crit = crit_points(self.x, penalty_function)
         val = self.objective.subs(crit)
         diff = self.p.subs(crit)
-        if self.u * diff > self.tolerance:
+        if self.u * diff > self.tolerance:  # repeate until tol achieved
             print("Objective value " + str(val) + " at points " + str(crit))
             print(str(self.u * diff) + ">" + str(self.tolerance) + " continuing iterations" + "for u=" + str(self.u))
             self.u = self.u * 10
             self.solve()
-        else:
+        else:  # Once tol achieved output final values
             print(str(self.u * diff) + "<=" + str(self.tolerance) + " ceasing iterations")
             print("Final objective value " + str(val) + " at points " + str(crit) + "for u=" + str(self.u))
+            # If mixed eigenvalues function has a saddle point
             if self.min and self.max:
-                print("Point is a saddle point")
+                print("Function has a saddle point")
             elif self.min:
                 print("Point is a minimum")
             elif self.max:
@@ -44,6 +48,7 @@ class NLPSolver(object):
             else:
                 print("Point is unknown")
 
+    # Analyze hessian to see if function has max, min, or saddle
     def analyze_hessian(self):
         h = hessian(self.x, self.objective)
         self.min = False
@@ -53,3 +58,4 @@ class NLPSolver(object):
                 self.min = True
             if eig < 0:
                 self.max = True
+            # If both true, function has a saddle

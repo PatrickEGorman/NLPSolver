@@ -9,10 +9,12 @@ if __name__ == '__main__':
     print("It prints out a calculated extreme point within a specified tolerance")
     print("It also prints out whether the point is a max or a min")
 
+    # Take in user input
     obj = input("Input Objective Function: ")
     constraint = input("Input Constraint: 0=")
     tol = input("Input tolerance: ")
 
+    # Pass input to solver and solve
     nlpsolve = NLPSolver(['x', 'y', 'z'], objective=obj, constraint=constraint, tolerance=tol)
     nlpsolve.solve()
     print("DONE")
