@@ -40,6 +40,8 @@ First enter the command ```pip install -r requirements.txt``` in a shell window 
 
 Then enter ```python main.py```
 
+If this fails try ```pip3 install -r requirements.txt``` and ```python3 main.py```
+
 Answer prompts for polynomial, constraint, and tolerance making sure it's in proper form and a polynomial this app can
 handle.
 
@@ -97,44 +99,12 @@ DONE
 Here the program does not correctly get the location of a saddle point of a second degree function, but does accurately
 determine that a saddle point exists due to properties of the Hessians eigenvalues.
 ```
-pInput Objective Function: x**2-y**2
-Input Constraint: 0=x+y-5
-Input tolerance: 0.1
-Objective value 0 at points {x: 0.500000000000000, y: -0.500000000000000}
-2.50000000000000>0.1 continuing iterationsfor u=0.1
-Objective value 0 at points {x: 5.00000000000000, y: -5.00000000000000}
-25.0000000000000>0.1 continuing iterationsfor u=1.0
-Objective value 0 at points {x: 50.0000000000000, y: -50.0000000000000}
-250.000000000000>0.1 continuing iterationsfor u=10.0
-Objective value 0 at points {x: 500.000000000000, y: -500.000000000000}
-2500.00000000003>0.1 continuing iterationsfor u=100.0
-Objective value 0 at points {x: 5000.00000000000, y: -5000.00000000000}
-25000.0000000044>0.1 continuing iterationsfor u=1000.0
-Objective value 0 at points {x: 50000.0000000000, y: -50000.0000000000}
-250000.000000696>0.1 continuing iterationsfor u=10000.0
-Objective value 0 at points {x: 500000.000000000, y: -500000.000000000}
-2499999.99998098>0.1 continuing iterationsfor u=100000.0
-Objective value 0 at points {x: 5000000.00000000, y: -5000000.00000000}
-25000000.0002817>0.1 continuing iterationsfor u=1000000.0
-Objective value 0 at points {x: 50000000.0000000, y: -50000000.0000000}
-250000000.251965>0.1 continuing iterationsfor u=10000000.0
-Objective value 0 at points {x: 500000000.000000, y: -500000000.000000}
-2500000030.63495>0.1 continuing iterationsfor u=100000000.0
-Objective value 0 at points {x: 5000000000.00000, y: -5000000000.00000}
-25000004087.0187>0.1 continuing iterationsfor u=1000000000.0
-Objective value 0 at points {x: 50000000000.0000, y: -50000000000.0000}
-250000041320.187>0.1 continuing iterationsfor u=10000000000.0
-Objective value 0 at points {x: 500000000000.000, y: -500000000000.000}
-2500000413651.87>0.1 continuing iterationsfor u=100000000000.0
-Objective value 0 at points {x: 5000000000000.00, y: -5000000000000.00}
-25004445226649.9>0.1 continuing iterationsfor u=1000000000000.0
-Objective value 0 at points {x: 50000000000000.0, y: -50000000000000.0}
-249600520792536.>0.1 continuing iterationsfor u=10000000000000.0
-Objective value 0 at points {x: 500000000000000., y: -500000000000000.}
-2.49600520792581e+15>0.1 continuing iterationsfor u=100000000000000.0
-0<=0.1 ceasing iterations
-Final objective value -y**2 + 25.0*(1 - 0.2*y)**2 at points {x: 5.0 - y}for u=1000000000000000.0
-Function has a saddle point
+Input Objective Function: x**2-y**2
+Input Constraint: 0=x-y+2
+Input tolerance: 0.001
+0.400000000000000<=0.001 ceasing iterations
+Final objective value 0 at points {x: -0.200000000000000, y: -0.200000000000000}for u=0.1
+Function has a saddle point.  Penalty method not effective.
 DONE
 
 ```
@@ -192,17 +162,18 @@ class NLPSolver(object):
         crit = crit_points(self.x, penalty_function)
         val = self.objective.subs(crit)
         diff = self.p.subs(crit)
-        if self.u * diff > self.tolerance: # repeate until tol achieved
+        # Iterate until tolerance is reached if function doesn't have a saddle point
+        if self.u * diff > self.tolerance and not (self.min and self.max):
             print("Objective value " + str(val) + " at points " + str(crit))
             print(str(self.u * diff) + ">" + str(self.tolerance) + " continuing iterations" + "for u=" + str(self.u))
             self.u = self.u * 10
             self.solve()
-        else: #Once tol achieved output final values
+        else:  # Once tol achieved output final values
             print(str(self.u * diff) + "<=" + str(self.tolerance) + " ceasing iterations")
             print("Final objective value " + str(val) + " at points " + str(crit) + "for u=" + str(self.u))
             # If mixed eigenvalues function has a saddle point
             if self.min and self.max:
-                print("Function has a saddle point")
+                print("Function has a saddle point.  Penalty method not effective.")
             elif self.min:
                 print("Point is a minimum")
             elif self.max:
